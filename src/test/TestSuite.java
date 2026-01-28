@@ -10,6 +10,4 @@ import org.junit.runners.Suite.SuiteClasses;
     RETest.class
 })
 public class TestSuite {
-    // This class remains empty
-    // It is used only as a holder for the above annotations
 }

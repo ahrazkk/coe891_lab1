@@ -10,9 +10,6 @@ import org.junit.runner.RunWith;
 @RunWith(Theories.class)
 public class MathTheoryTest {
     
-    // Task 1-2: val = {1, 2, 307, 400567}
-    // Task 3-4: newval = {0, -1, -10, -1234, 1, 10, 6789}
-    // Task 5: adds Integer.MAX_VALUE, Integer.MIN_VALUE
     @DataPoints
     public static int[] values = {
         1, 2, 307, 400567,
@@ -20,14 +17,13 @@ public class MathTheoryTest {
         Integer.MAX_VALUE, Integer.MIN_VALUE
     };
     
-    // Task 1: a + b > a and a + b > b (for a, b > 0)
-    // Task 4: Using assumptions to filter invalid cases
-    // Task 5: Using assumptions to avoid overflow
     @Theory
     public void testSumGreaterThanParts(int a, int b) {
+        // skip negatives and zero
         assumeTrue(a > 0);
         assumeTrue(b > 0);
         
+        // skip overflow cases
         long sum = (long) a + (long) b;
         assumeTrue(sum <= Integer.MAX_VALUE);
         
@@ -35,7 +31,6 @@ public class MathTheoryTest {
         assertTrue(a + b > b);
     }
     
-    // Task 2: a + b = b + a (commutative property)
     @Theory
     public void testCommutativeProperty(int a, int b) {
         assertEquals(a + b, b + a);
